@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:compass"
+    },
+    "title": {
+      "text": "Fantasy Eternal",
+      "color": "gold",
+      "bold": true
+    },
+    "description": {
+      "text": "Begin your eternal fantasy adventure"
+    },
+    "background": "fantasy_eternal:textures/gui/advancements/backgrounds/fantasy_eternal.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "inventory_trigger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {}
+    }
+  },
+  "requirements": [
+    [
+      "inventory_trigger"
+    ]
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "fantasy_eternal:farlands_trial_key"
+    },
+    "title": {
+      "text": "Key Keeper",
+      "color": "aqua"
+    },
+    "description": {
+      "text": "Obtain the mystical Farlands Trial Key"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "fantasy_eternal:fantasy_eternal/fantasy_eternal_root",
+  "criteria": {
+    "has_farlands_key": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["fantasy_eternal:farlands_trial_key"],
+            "count": {
+              "min": 1
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_farlands_key"
+    ]
+  ]
+}

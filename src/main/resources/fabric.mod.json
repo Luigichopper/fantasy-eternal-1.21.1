@@ -3,13 +3,13 @@
 	"id": "fantasy_eternal",
 	"version": "${version}",
 	"name": "Fantasy Eternal",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Fabric Minecraft Mod for the Fantasy Eternal Modpack",
 	"authors": [
-		"Me!"
+		"Luigichopper"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Luigichopper/fantasy-eternal-1.21.1"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/fantasy_eternal/icon.png",

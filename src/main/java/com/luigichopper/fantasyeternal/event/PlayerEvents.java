@@ -1,5 +1,6 @@
 package com.luigichopper.fantasyeternal.event;
 
+import com.luigichopper.fantasyeternal.data.PlayerCompassAttachment;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.component.DataComponentTypes;
@@ -27,19 +28,24 @@ public class PlayerEvents {
     );
 
     public static void initialize() {
-        // Give compass when player first joins the server
+        // Give compass when player first joins the server (only once per player)
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayerEntity player = handler.getPlayer();
 
-            // Debug: Always give compass for testing
-            server.execute(() -> giveStartingCompass(player));
+            server.execute(() -> {
+                // Check if player has already received the compass
+                boolean hasReceivedCompass = player.getAttachedOrElse(PlayerCompassAttachment.HAS_RECEIVED_COMPASS, false);
 
-            // Uncomment this for production (only gives to new players):
-            /*
-            if (player.getStatHandler().getStat(net.minecraft.stat.Stats.CUSTOM.getOrCreateStat(net.minecraft.stat.Stats.PLAY_TIME)) == 0) {
-                server.execute(() -> giveStartingCompass(player));
-            }
-            */
+                if (!hasReceivedCompass) {
+                    giveStartingCompass(player);
+                    // Mark that the player has received the compass
+                    player.setAttached(PlayerCompassAttachment.HAS_RECEIVED_COMPASS, true);
+
+                    System.out.println("[Fantasy Eternal] First time join - gave compass to player: " + player.getName().getString());
+                } else {
+                    System.out.println("[Fantasy Eternal] Player " + player.getName().getString() + " already has received compass");
+                }
+            });
         });
     }
 
@@ -131,8 +137,6 @@ public class PlayerEvents {
 
         return null;
     }
-
-
 
     /**
      * Creates a compass with proper lodestone tracker component data
