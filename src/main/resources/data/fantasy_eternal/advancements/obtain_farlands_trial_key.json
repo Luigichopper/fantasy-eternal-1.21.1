@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "fantasy_eternal:farlands_trial_key"
+    },
+    "title": {
+      "text": "Trial Keeper",
+      "color": "dark_purple"
+    },
+    "description": {
+      "text": "Obtain a Farlands Trial Key"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "minecraft:adventure/adventuring_time",
+  "criteria": {
+    "farlands_trial_key": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["fantasy_eternal:farlands_trial_key"]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}
